@@ -4,16 +4,20 @@ import 'package:lib/constants.dart';
 class ReusableCard extends StatelessWidget {
   final Color? color;
   final Widget? child;
-  ReusableCard({this.color, this.child});
+  final VoidCallback? onPress;
+  ReusableCard({this.color, this.child ,this.onPress});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: child,
-      margin: const EdgeInsets.all(15),
-      decoration: BoxDecoration(
-        color: color ?? ActiveCardColor,
-        borderRadius: BorderRadius.circular(10),
+    return GestureDetector(
+      onTap: onPress,
+      child: Container(
+        child: child,
+        margin: const EdgeInsets.all(15),
+        decoration: BoxDecoration(
+          color: color ?? kActiveCardColor,
+          borderRadius: BorderRadius.circular(10),
+        ),
       ),
     );
   }
