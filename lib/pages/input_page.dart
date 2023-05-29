@@ -2,6 +2,7 @@ import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:lib/components/bottom_button.dart';
 import 'package:lib/components/round_icon_button.dart';
 import 'package:lib/constants.dart';
 import 'package:lib/pages/result_page.dart';
@@ -218,7 +219,8 @@ class _InputPageState extends State<InputPage> {
               ],
             ),
           ),
-          GestureDetector(
+          BottomButton(
+            title: 'CALCULATE',
             onTap: () {
               Navigator.push(
                 context,
@@ -227,13 +229,6 @@ class _InputPageState extends State<InputPage> {
                 ),
               );
             },
-            child: Container(
-              color: kBottomContainerColor,
-              margin: const EdgeInsets.only(top: 10),
-              width: double.infinity,
-              height: kBottomContainerHeight,
-              child:const Center(child:  Text('CALCULATE',style: kLargeButtonText,),),
-            ),
           )
         ],
       ),

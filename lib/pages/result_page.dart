@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lib/components/bottom_button.dart';
 import 'package:lib/components/resuable_card.dart';
 import 'package:lib/constants.dart';
 
@@ -14,13 +15,18 @@ class ResultPage extends StatelessWidget {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          const Expanded(
-            child: Text(
-              'Your Result',
-              style: kTitleTextStyle,
-              textAlign: TextAlign.center,
+           Expanded(
+            
+            child: Container(
+              padding:const EdgeInsets.only(top:25),
+              child:const Text(
+                'Your Result',
+                style: kTitleTextStyle,
+                textAlign: TextAlign.center,
+              ),
             ),
           ),
+          
           Expanded(
             flex: 5,
             child: ReusableCard(
@@ -48,13 +54,22 @@ class ResultPage extends StatelessWidget {
                       ),
                     ],
                   ),
-                  Text(
-                    'You have a normal body .Good job!',
-                    style: kBodyTextStyle,
+                  Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: Text(
+                      'You have a normal body .Good job!',
+                      style: kBodyTextStyle,
+                    ),
                   ),
                 ],
               ),
             ),
+          ),
+           BottomButton(
+            title: 'RE-CALCULATE',
+            onTap: () {
+              Navigator.pop(context);
+            },
           )
         ],
       ),
