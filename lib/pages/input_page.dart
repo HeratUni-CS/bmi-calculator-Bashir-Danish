@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:lib/components/round_icon_button.dart';
 import 'package:lib/constants.dart';
+import 'package:lib/pages/result_page.dart';
 
 import '../components/icon_content.dart';
 import '../components/resuable_card.dart';
@@ -169,7 +170,8 @@ class _InputPageState extends State<InputPage> {
                     ),
                   ),
                 ),
-                Expanded(child: ReusableCard(
+                Expanded(
+                  child: ReusableCard(
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -211,20 +213,26 @@ class _InputPageState extends State<InputPage> {
                         ),
                       ],
                     ),
-                  ),),
+                  ),
+                ),
               ],
             ),
           ),
           GestureDetector(
-            onTap: (){
-              
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const ResultPage(),
+                ),
+              );
             },
             child: Container(
               color: kBottomContainerColor,
               margin: const EdgeInsets.only(top: 10),
               width: double.infinity,
               height: kBottomContainerHeight,
-              child:const Text('CALCULATE'),
+              child:const Center(child:  Text('CALCULATE',style: kLargeButtonText,),),
             ),
           )
         ],
@@ -232,4 +240,3 @@ class _InputPageState extends State<InputPage> {
     );
   }
 }
-
