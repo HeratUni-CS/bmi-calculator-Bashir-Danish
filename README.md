@@ -1,4 +1,4 @@
-# bmi_starting
+# lib
 
 A new Flutter project.
 
