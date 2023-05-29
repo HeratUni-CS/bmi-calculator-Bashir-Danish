@@ -2,6 +2,7 @@ import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:lib/Calculate.dart';
 import 'package:lib/components/bottom_button.dart';
 import 'package:lib/components/round_icon_button.dart';
 import 'package:lib/constants.dart';
@@ -222,10 +223,15 @@ class _InputPageState extends State<InputPage> {
           BottomButton(
             title: 'CALCULATE',
             onTap: () {
+              Calculate calculate =Calculate(height: height, weight: weight);
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => const ResultPage(),
+                  builder: (context) => ResultPage(
+                        bmiResult: calculate.calculateBMI(),
+                        resultText: calculate.getResult(),
+                        interpretation: calculate.getInterpretation(),
+                      ),
                 ),
               );
             },

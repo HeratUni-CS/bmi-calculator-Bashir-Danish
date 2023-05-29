@@ -4,7 +4,13 @@ import 'package:lib/components/resuable_card.dart';
 import 'package:lib/constants.dart';
 
 class ResultPage extends StatelessWidget {
-  const ResultPage({super.key});
+  final String? bmiResult;
+  final String? resultText;
+  final String? interpretation;
+  ResultPage(
+      {required this.interpretation,
+      required this.bmiResult,
+      required this.resultText});
 
   @override
   Widget build(BuildContext context) {
@@ -15,49 +21,47 @@ class ResultPage extends StatelessWidget {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-           Expanded(
-            
+          Expanded(
             child: Container(
-              padding:const EdgeInsets.only(top:25),
-              child:const Text(
+              padding: const EdgeInsets.only(top: 25),
+              child: const Text(
                 'Your Result',
                 style: kTitleTextStyle,
                 textAlign: TextAlign.center,
               ),
             ),
           ),
-          
           Expanded(
             flex: 5,
             child: ReusableCard(
-              child: const Column(
+              child:  Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text(
-                    'Normal',
+                    resultText!,
                     style: kResultTextStyle,
                   ),
                   Text(
-                    '20.3',
+                    bmiResult!,
                     style: kBMITextStyle,
                   ),
-                  Column(
-                    children: [
+                  const Column(
+                    children:[
                       Text(
                         'Normal BMI Range:',
                         style: kBodyGrayTextStyle,
                       ),
-                       Text(
+                      Text(
                         '18.5 - 25 kg/m2',
                         style: kBodyTextStyle,
                       ),
                     ],
                   ),
                   Padding(
-                    padding: EdgeInsets.all(8.0),
+                    padding:const EdgeInsets.all(8.0),
                     child: Text(
-                      'You have a normal body .Good job!',
+                      interpretation!,
                       style: kBodyTextStyle,
                     ),
                   ),
@@ -65,7 +69,7 @@ class ResultPage extends StatelessWidget {
               ),
             ),
           ),
-           BottomButton(
+          BottomButton(
             title: 'RE-CALCULATE',
             onTap: () {
               Navigator.pop(context);
